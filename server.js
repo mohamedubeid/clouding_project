@@ -1,19 +1,6 @@
 require('dotenv').config({ path: './configs/config.env' });
 const express = require('express');
-const path = require('path');
 const bodyParser = require('body-parser');
-
-const multer = require('multer');
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        console.log(file);
-        cb(null, 'Images');
-        // cb(null, Date.now() + path.extname(file.originalname));
-    },
-});
-
-const upload = multer({ storage });
-
 const sequelize = require('./db/config');
 const routes = require('./routes');
 const Image = require('./models/Image');
@@ -21,7 +8,7 @@ const CacheConfig = require('./models/CacheConfig');
 const CacheStatistics = require('./models/CacheStatistics');
 
 const app = express();
-
+app.use('/images', express.static('images')); //make images folder as public for views
 app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -34,7 +21,7 @@ app.listen(process.env.PORT, async () => {
     try {
         await sequelize.authenticate();
         console.log('Database Connection has been established successfully.');
-        await Image.sync();
+        await Image.sync({force: true});
         await CacheConfig.sync();
         await CacheStatistics.sync();
         console.log('Tables created.');
@@ -43,3 +30,4 @@ app.listen(process.env.PORT, async () => {
         process.exit(0);
     }
 });
+
