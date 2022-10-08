@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page A</title>
+</head>
+<body style="margin: auto; width:30%;  padding:20px">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 90px;">
+        <a href="./Keys.html" style="display: inline;  text-decoration: none;"><button style="display: inline;">Show all keys</button></a>
+    <a href="./Cache Configuration.html" style="display: inline;  text-decoration: none;"><button style="display: inline;">Cache Configuration</button></a> 
+    <a href="./mem-cache-statistics.html" style="display: inline;  text-decoration: none;"><button style="display: inline;">Cache Statistics</button></a> 
+    </div>
+
+    <form action="/upload" method="post">
+        <label>Key</label>
+        <input type="text">
+        <input type="submit" value="Show">
+    </form>
+
+
+    <form action="/upload" method="post" style="padding-top: 40px;" enctype="multipart/form-data">
+        <label style="margin-bottom:5px" for="key">Add Key:</label><br />
+        <input name="key" type="text" id="key" placeholder="add key" style="margin:10px"><br/>
+        <label style="margin-bottom:5px" for="image">Add Image:</label><br />
+        <input name="image" type="file" id="image" style="margin:10px"><br/>
+        <input type="submit" value="add" style="margin:10px">
+    </form>
+</body>
+</html>
