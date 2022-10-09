@@ -7,7 +7,7 @@ exports.showImage =  async (req, res) => {
      const image = await Image.findOne({where: {key}});
      if(image) {
          const path = image.dataValues.path;
-          res.render('show_image', {key, path});
+          return res.render('show_image', {key, path});
      }
       return res.render('error_page', {msg:'Invalid Key'});
     } catch (e) {
@@ -28,7 +28,7 @@ exports.showImage =  async (req, res) => {
                 return res.render('show_image', {key, path});
             }
             await Image.create({ key, path});
-            res.render('show_image', {key, path});
+            return res.render('show_image', {key, path});
         } catch(e) {
             console.log(e);
         }
