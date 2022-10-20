@@ -6,6 +6,7 @@ const routes = require('./routes');
 const Image = require('./models/Image');
 const CacheConfig = require('./models/CacheConfig');
 const CacheStatistics = require('./models/CacheStatistics');
+const CachePolices = require('./models/CachePolices');
 
 const app = express();
 app.use('/images', express.static('images')); //make images folder as public for views
@@ -24,6 +25,7 @@ app.listen(process.env.PORT, async () => {
         await Image.sync({force: true});
         await CacheConfig.sync();
         await CacheStatistics.sync();
+        await CachePolices.sync();
         console.log('Tables created.');
     } catch (error) {
         console.error('Unable to connect to the database:', error);

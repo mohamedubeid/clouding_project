@@ -8,12 +8,14 @@
 </head>
 <body style="margin: auto; width:30%;  padding:20px">
     <h2>Cache Configuration</h2>
-    <p>Space Available is <span>2.3</span> G</p>
     <form action="#" style="margin-bottom: 15px">
-        <label for="select"></label>
-        <input type="radio" name="select" id="randomReplacement" > Random Replacement
-        <input type="radio" name="select" id="leastRecentlyUsed"> Least Recently Used
+        <label for="select">Size</label>
+        <input type="number" name="size" max="100" min="5" value="20"/>MB <br /><br />
+        <label for="select" style="padding-top: 15px;"></label>
+        <input type="radio" name="rr" id="randomReplacement" value="rr" checked> Random Replacement
+        <input type="radio" name="lru" id="leastRecentlyUsed" value="lru"> Least Recently Used
     </form>
+    <br />
     <button style="margin: 8px">clear</button> <br>
     <a href="/"><button style="margin: 8px" >Home Page </button></a>
     
