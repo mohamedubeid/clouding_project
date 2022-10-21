@@ -2,12 +2,11 @@ require('dotenv').config({ path: './configs/config.env' });
 const express = require('express');
 const bodyParser = require('body-parser');
 const sequelize = require('./db/config');
-const routes = require('./routes');
 const Image = require('./models/Image');
 const CacheConfig = require('./models/CacheConfig');
 const CacheStatistics = require('./models/CacheStatistics');
 const CachePolices = require('./models/CachePolices');
-
+const routes = require('./routes');
 const app = express();
 app.use('/images', express.static('images')); //make images folder as public for views
 app.set('view engine', 'ejs');
@@ -32,4 +31,8 @@ app.listen(process.env.PORT, async () => {
         process.exit(0);
     }
 });
+
+// global.myCache = myCache;
+// console.log(myCache.getCapacity(), 'in server file')
+
 
